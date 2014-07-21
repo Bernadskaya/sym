@@ -1,0 +1,13 @@
+{% extends 'AntWebBundle::layout.html.twig' %}
+{% block content %}
+    {{ include('AntWebBundle:Ad:id_one.html.twig') }}
+    <div class="row">
+        <div id="set">
+            {{ include('AntWebBundle:Ad:id_two.html.twig') }}
+        </div>
+    </div>
+    <div class="row">
+        {{ include('AntWebBundle:Ad:id_three.html.twig') }}
+    </div>
+    {{ render(controller('AntMediaBundle:Gallery:last', {'max': 2})) }}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% for entity in entities if entity.active  %}
+    {% if entity.getAdGroup.id == '2'  %}
+        {% if loop.first %}
+            {{ entity.getAdGroup.title }}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{% for entity in entities  %}
+    {% if entity.getAdGroup.id == '2'  %}
+        {{ include('AntWebBundle:Ad:_two.html.twig') }}
+    {% endif %}
+{% endfor %}

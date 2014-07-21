@@ -1,0 +1,129 @@
+{% extends 'AntWebBundle::layout.html.twig' %}
+
+{% block content %}
+    {% trans_default_domain "AntWebBundle" %}
+
+
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="hr2 text-center"> {{ 'order.new'|trans({}, 'AntWebBundle') }}</h1>
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">
+                    {{ flashMessage|trans }}
+                </div>
+            {% endfor %}
+            <div class="col-sm-12 col-md-6 col-md-offset-3">
+                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        {{ form_label(form.name, null, {'label_attr': {'class': 'control-label'}}) }}
+                    </div>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.name,  {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="alert-danger">
+                        {{ form_errors(form.name) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+
+                        {{ form_label(form.surname, null, {'label_attr': {'class': 'control-label'}}) }}
+                    </div>
+
+                    <div class="col-sm-9">
+                        {{ form_widget(form.surname,  {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="alert-danger">
+                        {{ form_errors(form.surname) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        {{ form_label(form.phone, null, {'label_attr': {'class': 'control-label'}}) }}
+                    </div>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.phone,  {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="alert-danger">
+                        {{ form_errors(form.phone) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        {{ form_label(form.email, null, {'label_attr': {'class': 'control-label'}}) }}
+                    </div>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.email,  {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="alert-danger">
+                        {{ form_errors(form.email) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        {{ form_label(form.text, null, {'label_attr': {'class': 'control-label'}}) }}
+                    </div>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.text,  {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="alert-danger">
+                        {{ form_errors(form.text) }}
+                    </div>
+                </div>
+                <div class="hidden">
+                    <div class="col-sm-3">
+                        {{ form_label(form.agreement, 'Подтвердите согласие на обработку персональных данных', {'label_attr': {'class': 'control-label'}}) }}
+                    </div>
+                    <div class="col-sm-9 col-sm-offset-3">
+                        {% set terms_link %}
+                        <a title="{% trans %}Read the General Terms and Conditions{% endtrans %}" href="" data-toggle="modal" data-target="#myModal">
+                            {% trans %}General Terms and Conditions{% endtrans %}
+                        </a>
+                        {% endset %}
+                        {% set general_terms_and_conditions %}
+                        {{ 'I have read and accept the %general_terms_and_conditions%.'|trans({ '%general_terms_and_conditions%': terms_link })|raw }}
+                        {% endset %}
+
+                        {{ form_widget(form.agreement,  {'attr': {'class': 'form-control'} }) }}
+                        <label for="{{ form.agreement.vars.id }}">{{ general_terms_and_conditions|raw }}</label>
+
+                        <!-- Modal -->
+                      {{ include('AntWebBundle:OrderForm:agreement.html.twig') }}
+
+                    </div>
+                    {% if form_errors(form.agreement) %}
+                        <div class="alert-danger row">
+                            {{ form_errors(form.agreement) }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        {{ form_label(form.captcha, 'Введите код с картинки', {'label_attr': {'class': 'control-label'}}) }}
+                    </div>
+                    <div class="col-sm-3">
+
+                        {{ form_widget(form.captcha,  {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                </div>
+                {% if form_errors(form.captcha) %}
+                    <div class="alert-danger row">
+                        {{ form_errors(form.captcha) }}
+                    </div>
+                {% endif %}
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9 text-center">
+                        {{ form_widget(form.submit,  { 'label': 'Отправить заявку' , 'attr': {'class': 'btn btn-lg btn-primary'}}) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

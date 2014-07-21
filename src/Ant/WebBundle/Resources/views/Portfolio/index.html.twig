@@ -1,0 +1,10 @@
+{% extends 'AntWebBundle::layout.html.twig' %}
+{% block content %}
+    <h1>Portfolio list</h1>
+    {% for entity in entities %}
+        <a href="{{ path('portfolio_show', { 'id': entity.id }) }}">{{ entity.title }}</a>
+        {% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}
+        {{ render(controller('AntMediaBundle:Gallery:thumb', { 'id': entity.gallery|sonata_urlsafeid } )) }}
+        <a href="{{ path('portfolio_show', { 'id': entity.id }) }}">show</a>
+    {% endfor %}
+{% endblock %}

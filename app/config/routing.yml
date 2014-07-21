@@ -1,0 +1,7 @@
+ant:
+    resource: "@AntWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
+agreement:
+    pattern:  /{id}-{slug}
+    defaults: { _controller: "AntWebBundle:Page:showBlank", id: "4" }

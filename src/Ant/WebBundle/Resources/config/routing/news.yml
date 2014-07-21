@@ -1,0 +1,10 @@
+news:
+    pattern:  /
+    defaults: { _controller: "AntWebBundle:News:index" }
+
+ant_news_show:
+    pattern:  /{id}/{slug}
+    defaults: { _controller: "AntWebBundle:News:show" }
+
+
+

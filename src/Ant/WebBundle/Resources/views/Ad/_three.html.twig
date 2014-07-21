@@ -1,0 +1,7 @@
+<div class="col-md-2 thumbnail">
+    {% if entity.getMedia %}
+        <img src="{% path entity.getMedia, 'small' %}">
+    {% endif %}
+    <span class="{{ entity.icon }}"></span>
+    {{ entity.text|raw('html') }}
+</div>

@@ -1,0 +1,8 @@
+order_new:
+    pattern:  /new
+    defaults: { _controller: "AntWebBundle:OrderForm:new" }
+
+order_create_front:
+    pattern:  /create
+    defaults: { _controller: "AntWebBundle:OrderForm:create" }
+    requirements: { _method: post }

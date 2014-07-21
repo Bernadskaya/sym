@@ -1,0 +1,27 @@
+{% extends 'AntAdminBundle::standard_layout.html.twig' %}
+{% block sonata_page_content %}
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+               <h3> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+               </h3>
+            {% else %}
+                <h3><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'AntWebBundle') }}</a></h3>
+            {% endif %}
+        </div>
+
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+{% endblock sonata_page_content %}

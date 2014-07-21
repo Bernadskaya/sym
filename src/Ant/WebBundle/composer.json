@@ -1,0 +1,26 @@
+{
+    "name": "ant/webbundle",
+    "version": "1.1.0",
+    "license": "MIT",
+    "type": "bundle",
+    "description": "The Ant First Edition",
+
+    "require": {
+        "knplabs/knp-paginator-bundle": "2.4.0",
+        "knplabs/knp-menu-bundle":"1.1.2",
+        "gregwar/captcha-bundle": "v1.0.11",
+        "ant/userbundle": "1.1.0.*@dev",
+        "ant/adminbundle": "1.1.0.*@dev",
+        "ant/mediabundle": "1.1.0.*@dev"
+    },
+    "autoload": {
+        "psr-0": { "Ant\\WebBundle": "" }
+    },
+    "target-dir": "Ant/WebBundle",
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1.x-dev"
+        }
+    }
+}
