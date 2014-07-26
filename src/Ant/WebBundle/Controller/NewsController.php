@@ -22,7 +22,7 @@ class NewsController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AntWebBundle:News')->findBy(array(), array('created'=>'DESC'));
+        $entities = $em->getRepository('AntWebBundle:News')->findAll();
 
 
         $paginator  = $this->get('knp_paginator');

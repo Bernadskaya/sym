@@ -26,9 +26,5 @@
             {{ 'news.updated'| trans({}, 'AntWebBundle') }}  {{ entity.updated|date('d.m.y H:i') }}
         </div>
     </div>
-    {#{% for item in otherNews %}#}
-        {#<div>{{ item.title }}</div>#}
-    {#{% endfor %}#}
-
     {{ render(controller('AntWebBundle:News:other', {'id': entity.id})) }}
 {% endblock %}
