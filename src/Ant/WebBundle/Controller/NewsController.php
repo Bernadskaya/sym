@@ -6,6 +6,7 @@ namespace Ant\WebBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Ant\WebBundle\Entity\News;
+//use Ant\WebBundle\Entity\NewsRepository;
 
 /**
  * News controller.
@@ -21,7 +22,7 @@ class NewsController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AntWebBundle:News')->findAll();
+        $entities = $em->getRepository('AntWebBundle:News')->findBy(array(), array('created'=>'DESC'));
 
 
         $paginator  = $this->get('knp_paginator');
@@ -44,15 +45,24 @@ class NewsController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('AntWebBundle:News')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find News entity.');
         }
-
         return $this->render('AntWebBundle:News:show.html.twig', array(
             'entity'      => $entity,
+        ));
+    }
+
+    /*
+     * Find and display other News
+     */
+
+    public function otherAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $otherNews = $em->getRepository('AntWebBundle:News')->findOther($id);
+        return $this->render('AntWebBundle:News:other.html.twig', array(
+            'otherNews' => $otherNews,
         ));
     }
 }

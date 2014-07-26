@@ -3,7 +3,7 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
                   xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
-    <entity name="Ant\WebBundle\Entity\News" table="ant_News">
+    <entity name="Ant\WebBundle\Entity\News" table="ant_News" repository-class="Ant\WebBundle\Entity\NewsRepository">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>

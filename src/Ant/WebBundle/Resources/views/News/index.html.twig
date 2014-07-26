@@ -3,11 +3,6 @@
 {% block content %}
 {% trans_default_domain "AntWebBundle" %}
 
-    {% set menuItem = knp_menu_get('AntWebBundle:FrontendBuilder:mainMenu').getBreadcrumbsArray() %}
-
-    {{ knp_menu_render(menuItem) }}
-
-
     <div class="breadcrumb">
         <a href="{{ path('news') }}">
             {{ 'news.back'|trans }}
@@ -21,7 +16,7 @@
 
             <li class="media">
                 <a href="{{ path('ant_news_show', { 'slug': entity.slug, 'id': entity.id }) }}" class="pull-left">
-                    <img src="{{ entity.getWebPath | imagine_filter('my_thumb_out')  }}" class="img-rounded img-responsive media-object" /></a>
+                    <img src="{% path entity.getMedia, 'small' %}" class="img-rounded img-responsive media-object" /></a>
 
                 <div class="media-body">
                     <div class="text-muted">

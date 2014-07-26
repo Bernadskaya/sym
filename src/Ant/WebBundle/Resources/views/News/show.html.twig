@@ -14,8 +14,8 @@
         {{ entity.created|date('d.m.y H:i') }}
     </div>
     <div class="media">
-        {% if entity.getWebPath %}
-            <img src="{{ entity.getWebPath | imagine_filter('my_thumb_out')  }}" class="img-rounded img-responsive media-object pull-left" />
+        {% if entity.getMedia %}
+            <img src="{% path entity.getMedia, 'big' %}" class="img-rounded img-responsive media-object pull-left" />
         {% endif %}
         <div class="media-body">
             <h1 class="media-heading">{{ entity.title }}</h1>
@@ -26,4 +26,9 @@
             {{ 'news.updated'| trans({}, 'AntWebBundle') }}  {{ entity.updated|date('d.m.y H:i') }}
         </div>
     </div>
+    {#{% for item in otherNews %}#}
+        {#<div>{{ item.title }}</div>#}
+    {#{% endfor %}#}
+
+    {{ render(controller('AntWebBundle:News:other', {'id': entity.id})) }}
 {% endblock %}
