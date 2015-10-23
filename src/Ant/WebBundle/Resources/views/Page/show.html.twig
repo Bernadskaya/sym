@@ -3,6 +3,7 @@
     <meta name="keywords" content="{{ entity.metaKey }}">
     <meta name="description" content="{{ entity.metaDesc }}">
 {% endblock %}
+{% block title %}{{ entity.metaTitle }}{% endblock %}
 {% block content %}
 
     <ol class="breadcrumb"><li>Главная</li><li><a href="{{ path('portfolio') }}">Портфолио</a></li></ol>

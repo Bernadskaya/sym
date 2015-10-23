@@ -14,13 +14,39 @@ use Doctrine\ORM\EntityRepository;
 class NewsRepository extends EntityRepository {
 
     public function findAll(){
-        return $this->findBy(array(), array('created'=>'DESC'));
+        return $this->findBy(array('enabled'=>true), array('created'=>'DESC'));
 
     }
 
-    public function findOther($id){
-        $dql = "SELECT n FROM AntWebBundle:News n WHERE n.id != ?1 ORDER BY n.created DESC";
-        return $this->getEntityManager()->createQuery($dql)
+    public function findLast($max){
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('n')
+            ->from('AntWebBundle:News', 'n')
+            ->setMaxResults($max)
+            ->orderBy('n.created', 'DESC')
+        ;
+
+        $query = $qb->getQuery();
+
+        $result = $query->getResult();
+        return $result;
+
+    }
+    public function findOther($id, $max){
+
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('n')
+            ->from('AntWebBundle:News', 'n')
             ->setParameter(1, $id)
-            ->getResult();    }
+            ->where('n.id != ?1')
+            ->setMaxResults($max)
+            ->orderBy('n.id', 'DESC')
+        ;
+
+        $query = $qb->getQuery();
+
+        $result = $query->getResult();
+        return $result;
+
+    }
 }

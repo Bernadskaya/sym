@@ -1,12 +1,8 @@
-{% for entity in entities if entity.active  %}
-    {% if entity.getAdGroup.id == '2'  %}
+{%  if twoGroup.getEnabled %}
+    {% for entity in twoGroupAds  %}
         {% if loop.first %}
-            {{ entity.getAdGroup.title }}
+          <h1>{{ entity.getAdGroup.title }}</h1>
         {% endif %}
-    {% endif %}
-{% endfor %}
-{% for entity in entities  %}
-    {% if entity.getAdGroup.id == '2'  %}
         {{ include('AntWebBundle:Ad:_two.html.twig') }}
-    {% endif %}
-{% endfor %}
+    {% endfor %}
+{% endif %}

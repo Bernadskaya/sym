@@ -1,23 +1,20 @@
-{% for entity in entities %}
-    {% if entity.getAdGroup.id == '1'  %}
-    {% if entity.getAdGroup %}
+{%  if oneGroup.getEnabled %}
+    {% for entity in oneGroupAds %}
         {% if loop.first %}
-            {{ entity.getAdGroup.title }}
+                {{ entity.getAdGroup.title }}
         {% endif %}
-    {% endif %}
-    {% endif %}
-{% endfor %}
-<div class="row">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            {% for entity in entities if entity.getAdGroup.id == '1' %}
+    {% endfor %}
+    <div class="row">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                {% for entity in oneGroupAds  %}
                     {% if loop.first %}
                         <div class="item active">
                             <img src="{% path entity.getMedia, 'big' %}">
@@ -35,14 +32,15 @@
                             </div>
                         </div>
                     {% endif %}
-            {% endfor %}
+                {% endfor %}
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
         </div>
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
     </div>
-</div>
+{% endif %}

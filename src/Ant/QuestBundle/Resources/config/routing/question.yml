@@ -1,0 +1,10 @@
+question:
+    path:     /
+    defaults: { _controller: "AntQuestBundle:Question:index" }
+
+question_show:
+    path:     /{id}/show
+    defaults: { _controller: "AntQuestBundle:Question:show" }
+
+
+

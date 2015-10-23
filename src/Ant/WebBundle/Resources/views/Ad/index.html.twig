@@ -9,5 +9,10 @@
     <div class="row">
         {{ include('AntWebBundle:Ad:id_three.html.twig') }}
     </div>
-    {{ render(controller('AntMediaBundle:Gallery:last', {'max': 2})) }}
+    <div>
+        {{ render(controller('AntMediaBundle:Gallery:last', {'max': 5})) }}
+    </div>
+    <div>
+        {{ render(controller('AntWebBundle:News:last', {'max': 1})) }}
+    </div>
 {% endblock %}

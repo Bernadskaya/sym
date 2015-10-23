@@ -3,6 +3,8 @@ imports:
     - { resource: security.yml }
     - { resource: @AntAdminBundle/Resources/config/admin.yml }
     - { resource: @AntWebBundle/Resources/config/ant_config.yml }
+    - { resource: @AntUserBundle/Resources/config/config.yml }
+    - { resource: @AntQuestBundle/Resources/config/services.yml }
 
 framework:
     #esi:             ~

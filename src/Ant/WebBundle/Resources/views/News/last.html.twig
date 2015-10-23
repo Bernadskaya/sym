@@ -1,0 +1,5 @@
+{% for item in lastNews if item.enabled %}
+    <div>{{ item.title }}</div>
+    <div>{{ item.description }}</div>
+    <div>{{ item.created|date('d.m.y') }}</div>
+{% endfor %}

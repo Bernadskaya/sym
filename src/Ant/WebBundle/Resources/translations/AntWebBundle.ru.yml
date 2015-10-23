@@ -38,6 +38,7 @@ news:
   path: Имя файла
   created: Время создания
   updated: Последнее обновление
+  enabled: Опубликовано
   id: ID
 orders:
   all: Заявки
@@ -53,6 +54,7 @@ pages:
   text: Текст на странице
   metaKey: Ключевые слова
   metaDesc: Описание для поисковых систем
+  metaTitle: Название страницы для поисковых систем
   id: ID
 portfolio:
   id: ID
@@ -95,6 +97,7 @@ order:
   text: Сообщение
   create: Отправить
 news:
+  id: id
   all: Новости
   list:  Новости
   read:  Подробнее
@@ -114,3 +117,7 @@ layout:
   forgot: Забыли пароль?
 admin:
   actions: Действия
+gallery:
+  category: Категории
+  link: Ссылка
+sonata_media: Галереи и изображения

@@ -33,7 +33,12 @@ class AdAdmin extends Admin {
                 'required' => false,
                 'label'=>'ad.text',
             ))
-            ->add('icon', 'text', array(
+            ->add('icon', 'choice', array(
+                                'choices' => array(
+                                    "fa-check-square",
+ "fa-check-square-o"
+
+                ),
                 'required' => false,
                 'label'=>'ad.icon',
             ))
@@ -53,7 +58,8 @@ class AdAdmin extends Admin {
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'default',
                 'required' => false))
-            ->add('active', null, array('required' => false,
+            ->add('active', null, array(
+                'required' => false,
                 'label'=>'ad.active'
             ))
 
@@ -100,12 +106,12 @@ class AdAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id',null, array(
-                'label'=>'ad.id'))
+            ->add('id', null, array('label'=>'ad.id'))
+            ->addIdentifier('title',null, array(
+                'label'=>'ad.title'))
             ->add('adGroup.title',null,array('label'=>'ad.group'))
-            ->add('title', null, array('label'=>'ad.title'))
             ->add('position', null, array('label'=>'ad.position'))
-            ->add('active', 'boolean', array('label'=>'ad.active'))
+            ->add('active', 'boolean', array('editable' => true, 'label'=>'ad.active'))
             ->add('url','url', array(
                 'label'=>'ad.url'))
             ->add('_action', 'actions', array(

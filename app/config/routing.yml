@@ -1,3 +1,7 @@
+ant_quest:
+    resource: "@AntQuestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ant:
     resource: "@AntWebBundle/Resources/config/routing.yml"
     prefix:   /

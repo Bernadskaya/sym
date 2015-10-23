@@ -1,0 +1,30 @@
+quiz:
+    path:     /
+    defaults: { _controller: "AntQuestBundle:Quiz:index" }
+
+quiz_show:
+    path:     /{id}/show
+    defaults: { _controller: "AntQuestBundle:Quiz:show" }
+
+quiz_new:
+    path:     /new
+    defaults: { _controller: "AntQuestBundle:Quiz:new" }
+
+quiz_create:
+    path:     /create
+    defaults: { _controller: "AntQuestBundle:Quiz:create" }
+    requirements: { _method: post }
+
+quiz_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AntQuestBundle:Quiz:edit" }
+
+quiz_update:
+    path:     /{id}/update
+    defaults: { _controller: "AntQuestBundle:Quiz:update" }
+    requirements: { _method: post|put }
+
+quiz_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AntQuestBundle:Quiz:delete" }
+    requirements: { _method: post|delete }

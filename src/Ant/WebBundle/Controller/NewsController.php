@@ -4,9 +4,8 @@ namespace Ant\WebBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-use Ant\WebBundle\Entity\News;
-//use Ant\WebBundle\Entity\NewsRepository;
 
 /**
  * News controller.
@@ -29,7 +28,7 @@ class NewsController extends Controller
         $pagination = $paginator->paginate(
             $entities,
             $this->get('request')->query->get('page', 1)/*page number*/,
-            2/*limit per page*/
+            10/*limit per page*/
         );
 
         return $this->render('AntWebBundle:News:index.html.twig', array(
@@ -44,7 +43,7 @@ class NewsController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine();
         $entity = $em->getRepository('AntWebBundle:News')->find($id);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find News entity.');
@@ -54,13 +53,21 @@ class NewsController extends Controller
         ));
     }
 
+    public function lastAction($max) {
+        $em = $this->getDoctrine()->getManager();
+        $lastNews = $em->getRepository('AntWebBundle:News')->findLast($max);
+        return $this->render('AntWebBundle:News:last.html.twig', array(
+            'lastNews' => $lastNews,
+        ));
+    }
     /*
      * Find and display other News
      */
 
-    public function otherAction($id) {
-        $em = $this->getDoctrine()->getManager();
-        $otherNews = $em->getRepository('AntWebBundle:News')->findOther($id);
+    public function otherAction($id, $max) {
+        $em = $this->getDoctrine();
+
+        $otherNews = $this->getDoctrine()->getRepository('AntWebBundle:News')->findOther($id, $max);
         return $this->render('AntWebBundle:News:other.html.twig', array(
             'otherNews' => $otherNews,
         ));

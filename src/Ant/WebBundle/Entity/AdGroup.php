@@ -20,7 +20,23 @@ class AdGroup
     /**
      * @var boolean
      */
-    private $active;
+    private $enabled;
+
+    /**
+     * @param boolean $enabled
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
 
 
     /**
@@ -57,28 +73,4 @@ class AdGroup
         return $this->title;
     }
 
-
-//    /**
-//     * Set active
-//     *
-//     * @param boolean $active
-//     *
-//     * @return Ad
-//     */
-//    public function setActive($active)
-//    {
-//        $this->active = $active;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get active
-//     *
-//     * @return boolean
-//     */
-//    public function getActive()
-//    {
-//        return $this->active;
-//    }
 }

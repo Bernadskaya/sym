@@ -19,7 +19,7 @@ class FrontendBuilder extends ContainerAware {
         $menu->setChildrenAttribute('class', 'nav navbar-nav')
             ->addChild('menu.frontend.index', array('route' => 'ad'))
             ->setExtra('translation_domain', 'AntWebBundle');
-        $menu['menu.frontend.index']
+        $menu
             ->addChild('menu.frontend.news', array('route' => 'news'))
             ->setExtra('translation_domain', 'AntWebBundle');
         $menu
@@ -32,14 +32,15 @@ class FrontendBuilder extends ContainerAware {
             ->addChild('menu.frontend.order', array('route' => 'order_new'))
             ->setExtra('translation_domain', 'AntWebBundle');
         $menu
-            ->addChild('menu.frontend.services', array())
+            ->addChild('menu.frontend.services', array('uri' => '#'))
             ->setExtra('translation_domain', 'AntWebBundle');
-        $menu['menu.frontend.services']->setUri('#');
+        $menu['menu.frontend.services']
+            ->setChildrenAttributes(array ('class'=>'nav'));
         $menu['menu.frontend.services']
             ->addChild('menu.frontend.services_1', array('uri' => '#services_1'))
             ->setExtra('translation_domain', 'AntWebBundle');
         $menu['menu.frontend.services'
-            ]->addChild('menu.frontend.services_2', array('route' => ''))
+            ]->addChild('menu.frontend.services_2', array('uri' => '#services_2'))
             ->setExtra('translation_domain', 'AntWebBundle');
         $menu['menu.frontend.services']
             ->setChildrenAttributes(array ('id'=>'block','class'=>'nav collapse in'));

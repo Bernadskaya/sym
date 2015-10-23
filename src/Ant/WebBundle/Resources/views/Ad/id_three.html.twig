@@ -1,5 +1,8 @@
-{%  for entity in entities if entity.active %}
-    {% if entity.getAdGroup.id == '3'  %}
+{% if threeGroup.getEnabled %}
+    {% for entity in threeGroupAds  %}
+        {% if loop.first %}
+            <h1>{{ entity.getAdGroup.title }}</h1>
+        {% endif %}
         {{ include('AntWebBundle:Ad:_three.html.twig') }}
-    {% endif %}
-{% endfor %}
+    {% endfor %}
+{% endif %}

@@ -3,6 +3,7 @@
     <meta name="keywords" content="{{ entity.metaKey }}">
     <meta name="description" content="{{ entity.metaDesc }}">
 {% endblock %}
+{% block title %}{{ entity.title }}{% endblock %}
 {% block content %}
     {% trans_default_domain "AntWebBundle" %}
     <div class="breadcrumb">
@@ -26,5 +27,5 @@
             {{ 'news.updated'| trans({}, 'AntWebBundle') }}  {{ entity.updated|date('d.m.y H:i') }}
         </div>
     </div>
-    {{ render(controller('AntWebBundle:News:other', {'id': entity.id})) }}
+    {{ render(controller('AntWebBundle:News:other', {'id': entity.id, 'max': 3 })) }}
 {% endblock %}

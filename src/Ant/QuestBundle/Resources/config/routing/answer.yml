@@ -1,0 +1,30 @@
+answer:
+    path:     /
+    defaults: { _controller: "AntQuestBundle:Answer:index" }
+
+answer_show:
+    path:     /{id}/show
+    defaults: { _controller: "AntQuestBundle:Answer:show" }
+
+answer_new:
+    path:     /new
+    defaults: { _controller: "AntQuestBundle:Answer:new" }
+
+answer_create:
+    path:     /create
+    defaults: { _controller: "AntQuestBundle:Answer:create" }
+    requirements: { _method: post }
+
+answer_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AntQuestBundle:Answer:edit" }
+
+answer_update:
+    path:     /{id}/update
+    defaults: { _controller: "AntQuestBundle:Answer:update" }
+    requirements: { _method: post|put }
+
+answer_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AntQuestBundle:Answer:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Quiz creation {{ entity.name }}</h1>
+
+    {{ form_start(form) }}
+
+    <h3>questions</h3>
+    <ul class="tags">
+        {# iterate over each existing tag and render its only field: name #}
+        {% for answer in questions %}
+            <li>{{ form_row(question.title) }}</li>
+        {% endfor %}
+    </ul>
+    {{ form_end(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('quiz') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

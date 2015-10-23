@@ -3,7 +3,6 @@
 namespace Ant\WebBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * News
@@ -77,6 +76,27 @@ class News
      */
     private $media;
 
+    /**
+     * @var boolean
+     */
+
+    private $enabled;
+
+    /**
+     * @param boolean $enabled
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
 
     /**
      * Get id

@@ -35,6 +35,11 @@ class Page
     private $metaDesc;
 
     /**
+     * @var string
+     */
+    private $metaTitle;
+
+    /**
      * @Gedmo\Slug(fields={"title"})
      *
      */
@@ -145,6 +150,29 @@ class Page
     public function getMetaDesc()
     {
         return $this->metaDesc;
+    }
+    /**
+     * Set metaTitle
+     *
+     * @param string $metaTitle
+     *
+     * @return Page
+     */
+    public function setMetaTitle($metaTitle)
+    {
+        $this->metaTitle = $metaTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get metaTitle
+     *
+     * @return string
+     */
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
     }
 
 

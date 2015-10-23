@@ -84,11 +84,6 @@ sonata_admin:
         short_object_description:    AntAdminBundle:Helper:short-object-description.html.twig
         search_result_block: AntAdminBundle:Block:block_search_result.html.twig
 
-fos_user:
-    db_driver: orm
-    firewall_name: main
-    user_class: Ant\UserBundle\Entity\User
-
 
 stof_doctrine_extensions:
     default_locale: en

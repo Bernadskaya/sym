@@ -12,7 +12,7 @@
         <field name="url" type="string" column="url" length="100" nullable="true"/>
         <field name="position" type="integer" column="position" nullable="true"/>
         <field name="active" type="boolean" column="active" nullable="true"/>
-        <one-to-one field="media" target-entity="Ant\MediaBundle\Entity\Media" inversed-by="ad">
+        <one-to-one field="media" target-entity="Ant\MediaBundle\Entity\Media">
             <cascade><cascade-persist/></cascade>
         </one-to-one>
         <many-to-one field="adGroup" target-entity="AdGroup">

@@ -11,6 +11,7 @@
         <field name="text" type="text" column="text"  nullable="true"/>
         <field name="metaKey" type="string" column="metaKey" length="255"  nullable="true"/>
         <field name="metaDesc" type="string" column="metaDesc" length="255" nullable="true"/>
+        <field name="metaTitle" type="string" column="metaTitle" length="255" nullable="true"/>
         <field name="slug" type="string" length="156" unique="true">
             <gedmo:slug unique="true" style="camel" updatable="false" separator="-" fields="title" />
         </field>

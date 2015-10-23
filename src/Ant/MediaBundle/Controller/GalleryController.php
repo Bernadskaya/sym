@@ -11,9 +11,12 @@ namespace Ant\MediaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Sonata\MediaBundle\Controller\GalleryController as BaseGalleryController;
 
+use Ant\MediaBundle\Entity\Gallery;
+use Ant\MediaBundle\Entity\GalleryRepository;
 
-class GalleryController extends Controller
+class GalleryController extends BaseGalleryController
 {
 
     /**
@@ -22,11 +25,15 @@ class GalleryController extends Controller
     public function indexAction()
     {
         $galleries = $this->get('sonata.media.manager.gallery')->findBy(array(
-            'enabled' => true
-        ));
+                'enabled' => true
+            ),
+            array('createdAt'=>'DESC')
+        );
+        $categories = $this->getDoctrine()->getRepository('AntWebBundle:Category')->findAll();
 
         return $this->render('AntMediaBundle:Gallery:index.html.twig', array(
             'galleries'   => $galleries,
+            'categories'   => $categories
         ));
     }
 
@@ -37,8 +44,11 @@ class GalleryController extends Controller
     {
 
         $galleries = $this->get('sonata.media.manager.gallery')->findBy(array(
-            'enabled' => true
-        ));
+                'enabled' => true
+            ),
+            array('createdAt'=>'DESC')
+        );
+        $categories = $this->getDoctrine()->getRepository('AntWebBundle:Category')->findAll();
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -49,7 +59,8 @@ class GalleryController extends Controller
 
         return $this->render('AntMediaBundle:Gallery:last.html.twig', array(
             'galleries'   => $galleries,
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'categories'   => $categories
 
         ));
     }
@@ -66,13 +77,11 @@ class GalleryController extends Controller
             'id'      => $id,
             'enabled' => true
         ));
-
         if (!$gallery) {
             throw new NotFoundHttpException('unable to find the gallery with the id');
         }
-
         return $this->render('AntMediaBundle:Gallery:view.html.twig', array(
-            'gallery'   => $gallery,
+            'gallery'   => $gallery
         ));
     }
 
@@ -85,9 +94,18 @@ class GalleryController extends Controller
         if (!$gallery) {
             throw new NotFoundHttpException('unable to find the gallery with the id');
         }
-
         return $this->render('AntMediaBundle:Gallery:thumb.html.twig', array(
             'gallery'   => $gallery,
+        ));
+    }
+
+    public function otherAction ($id, $max)
+    {
+
+        $em = $this->getDoctrine();
+        $otherGalleries = $em->getRepository('AntMediaBundle:Gallery')->findOther($id,$max);
+        return $this->render('AntMediaBundle:Gallery:other.html.twig', array(
+            'otherGalleries'   => $otherGalleries,
         ));
     }
 

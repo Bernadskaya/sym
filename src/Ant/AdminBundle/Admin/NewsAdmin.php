@@ -27,6 +27,12 @@ class NewsAdmin extends Admin
                 'attr' => array('class'=>'form-control')
 
             ))
+            ->add('enabled', null, array(
+                'label'=>'news.enabled',
+                'required' => false,
+                'attr' => array('class'=>'form-control')
+
+            ))
             ->add('description','textarea', array(
                 'label'=>'news.description',
                 'attr' => array('class'=>'form-control')
@@ -121,7 +127,7 @@ class NewsAdmin extends Admin
             ->add('id', null, array(
         'label'=>'news.id',
     ))
-            ->add('title', null, array(
+            ->addIdentifier('title', null, array(
                 'label'=>'news.title',
             ))
             ->add('created',null, array(
@@ -130,6 +136,8 @@ class NewsAdmin extends Admin
             ->add('updated', null, array(
                 'label'=>'news.updated',
             ))
+            ->add('enabled', 'boolean', array('editable' => true,'label'=>'news.enabled'))
+
             ->add('_action', 'actions', array(
                 'label'=>'admin.actions',
                 'actions' => array(

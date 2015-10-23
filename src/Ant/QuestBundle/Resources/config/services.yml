@@ -1,0 +1,27 @@
+services:
+#    ant_quest.example:
+#        class: Ant\QuestBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    ant_quest.admin.question:
+        class: Ant\QuestBundle\Admin\QuestionAdmin
+        arguments: [~, Ant\QuestBundle\Entity\Question, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Question}
+
+    ant_quest.admin.type:
+        class: Ant\QuestBundle\Admin\TypeAdmin
+        arguments: [~, Ant\QuestBundle\Entity\Type, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Type}
+
+    ant_quest.admin.variant:
+        class: Ant\QuestBundle\Admin\VariantAdmin
+        arguments: [~, Ant\QuestBundle\Entity\Variant, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Variant}
+
+    ant_quest.admin.quiz:
+        class: Ant\QuestBundle\Admin\QuizAdmin
+        arguments: [~, Ant\QuestBundle\Entity\Quiz, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Quiz}

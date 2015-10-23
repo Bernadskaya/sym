@@ -36,8 +36,7 @@ class AppKernel extends Kernel
             new Ant\UserBundle\AntUserBundle(),
             new Ant\AdminBundle\AntAdminBundle(),
             new Ant\MediaBundle\AntMediaBundle(),
-
-
+            new Ant\QuestBundle\AntQuestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

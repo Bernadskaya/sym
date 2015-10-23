@@ -1,0 +1,15 @@
+ant_quest_quiz:
+    resource: "@AntQuestBundle/Resources/config/routing/quiz.yml"
+    prefix:   /quiz
+
+ant_quest_question:
+    resource: "@AntQuestBundle/Resources/config/routing/question.yml"
+    prefix:   /question
+
+ant_quest_answer:
+    resource: "@AntQuestBundle/Resources/config/routing/answer.yml"
+    prefix:   /answer
+
+ant_quest_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AntQuestBundle:Default:index }

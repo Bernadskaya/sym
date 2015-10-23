@@ -16,10 +16,7 @@ class AdRepository extends EntityRepository{
 
     public function findByAdGroup($id)
     {
-        $dql = "SELECT a FROM AntWebBundle:Ad a WHERE a.adGroup = ?1 ORDER BY a.position ASC";
-        return $this->getEntityManager()->createQuery($dql)
-            ->setParameter(1, $id)
-            ->getResult();
+        return $this->findBy(array('active' => true, 'adGroup'=>$id), array('position'=>'ASC'));
     }
 
     public function findActiveGroup()

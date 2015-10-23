@@ -31,7 +31,7 @@ class Ad
     private $url;
 
     /**
-     * @var integer
+     * @var \Ant\WebBundle\Entity\AdGroup $adGroup
      */
     private $adGroup;
 
@@ -146,7 +146,7 @@ class Ad
     /**
      * Set adGroup
      *
-     * @param integer $adGroup
+     * @param \Ant\WebBundle\Entity\AdGroup $adGroup
      *
      * @return Ad
      */
@@ -160,7 +160,7 @@ class Ad
     /**
      * Get adGroupId
      *
-     * @return integer
+     * @return \Ant\WebBundle\Entity\AdGroup
      */
     public function getAdGroup()
     {
@@ -261,5 +261,11 @@ class Ad
     public function getActive()
     {
         return $this->active;
+    }
+
+    public function getEnabledAdGroup (){
+        $enabled = $this->getAdGroup()->getEnabled();
+        return $enabled;
+
     }
 }

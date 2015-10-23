@@ -5,6 +5,6 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="title" type="string" column="title" length="50"/>
-    <!--<field name="active" type="boolean" column="active" nullable="true"/>-->
+    <field name="enabled" type="boolean" nullable="true"/>
   </entity>
 </doctrine-mapping>
